@@ -2,7 +2,7 @@
 set ruler                       " show the cursor position all the time
 set number			" show line number
 set t_Co=256
-set ambiwidth=double
+" set ambiwidth=double
 set laststatus=2
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set nocompatible                " vi compatible is LAME
