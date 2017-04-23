@@ -1,0 +1,89 @@
+" set ai			" set auto-indenting on for programming
+set ruler                       " show the cursor position all the time
+set number			" show line number
+set t_Co=256
+" set ambiwidth=double
+set laststatus=2
+set backspace=indent,eol,start  " make that backspace key work the way it should
+set nocompatible                " vi compatible is LAME
+set background=dark             " Use colours that work well on a dark background (Console is usually black)
+
+" Set encoding
+set encoding=utf-8
+set fileencodings=utf-8,chinese,latin-1
+if has("win32")
+    set fileencoding=chinese
+else
+    set fileencoding=utf-8
+endif
+
+"source $VIMRUNTIME/delmenu.vim
+"source $VIMRUNTIME/menu.vim
+set langmenu=en_US.utf-8
+language messages en_US.utf-8
+"let $LANG = 'en_US'
+
+syntax on                       " turn syntax highlighting on by default
+filetype off              	" required
+
+set rtp+=$HOME/.vim/bundle/Vundle.vim/
+call vundle#begin('$HOME/.vim/bundle/')
+
+" Let the Vundle to manage itself
+Plugin 'VundleVim/Vundle.vim'
+
+" Install some plugin here
+Plugin 'kien/ctrlp.vim'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+Plugin 'rking/ag.vim'
+
+call vundle#end()
+
+filetype plugin indent on 	" required
+
+" Set leader here
+let mapleader=","
+
+" Configure the air line
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#tabs_label = 't'
+let g:airline_theme="molokai"
+map [b :bp<CR>
+map ]b :bn<CR>
+map <leader>1 :b 1<CR>
+map <leader>2 :b 2<CR>
+map <leader>3 :b 3<CR>
+map <leader>4 :b 4<CR>
+map <leader>5 :b 5<CR>
+map <leader>6 :b 6<CR>
+map <leader>7 :b 7<CR>
+map <leader>8 :b 8<CR>
+map <leader>9 :b 9<CR>
+map <leader>bq :bp <BAR> bd #<CR>
+
+" Configure the NerdTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
+
+" Configure the UltiSnips
+let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:UltiSnipsJumpForwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+
+" Configure the Ag
+let g:ag_working_path_mode="r"
